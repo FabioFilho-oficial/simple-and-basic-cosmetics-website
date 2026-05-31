@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--ico-->
+<link rel="shortcut icon" href="imagens/icon.ico" type="image/x-icon">
+<title>Glow Beauty — Shop</title>
+<!-- CSS externo -->
+<link rel="stylesheet" href="css/shop.css">
+<!-- Fonte externa mantida -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ==================== CABEÇALHO ==================== -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Glow <span>Beauty</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="produto.html">Produto</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="conta.html">Minha Conta</a>
+    </nav>
+    <div class="header-icons">
+      <button class="icon-btn" aria-label="Buscar">🔍</button>
+      <button class="icon-btn" aria-label="Minha conta">👤</button>
+      <button class="icon-btn" aria-label="Carrinho">
+        🛒
+        <span class="badge">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== SHOP HERO (BANNER SUPERIOR) ==================== -->
+<div class="shop-hero">
+  <div class="shop-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / Shop
+    </div>
+    <h1>Nossa <em>coleção completa</em></h1>
+    <p>Descubra mais de 170 produtos veganos e cruelty-free</p>
+  </div>
+</div>
+
+<!-- ==================== LAYOUT PRINCIPAL (SIDEBAR + PRODUTOS) ==================== -->
+<div class="shop-layout">
+  
+  <!-- SIDEBAR - Filtros laterais -->
+  <aside class="sidebar">
+    <!-- Filtro de categorias -->
+    <div class="filter-section">
+      <div class="filter-title">Categorias <span>▾</span></div>
+      <label class="check-label">
+        <input type="checkbox" checked> Base <span class="count-pill">48</span>
+      </label>
+      <label class="check-label">
+        <input type="checkbox"> Batom <span class="count-pill">62</span>
+      </label>
+      <label class="check-label">
+        <input type="checkbox"> Hidratante <span class="count-pill">34</span>
+      </label>
+      <label class="check-label">
+        <input type="checkbox"> Perfume <span class="count-pill">27</span>
+      </label>
+      <label class="check-label">
+        <input type="checkbox"> Blush <span class="count-pill">19</span>
+      </label>
+      <label class="check-label">
+        <input type="checkbox"> Sérum <span class="count-pill">15</span>
+      </label>
+    </div>
+
+    <!-- Filtro de preço -->
+    <div class="filter-section">
+      <div class="filter-title">Preço <span>▾</span></div>
+      <div class="price-range">
+        <span>R$ 0</span>
+        <input type="range" min="0" max="500" value="300" class="price-slider">
+        <span class="price-value">R$ 300</span>
+      </div>
+    </div>
+
+    <!-- Filtro por tipo de pele -->
+    <div class="filter-section">
+      <div class="filter-title">Tipo de pele <span>▾</span></div>
+      <label class="check-label">
+        <input type="radio" name="skin"> Seca
+      </label>
+      <label class="check-label">
+        <input type="radio" name="skin" checked> Mista
+      </label>
+      <label class="check-label">
+        <input type="radio" name="skin"> Oleosa
+      </label>
+      <label class="check-label">
+        <input type="radio" name="skin"> Sensível
+      </label>
+    </div>
+
+    <!-- Filtro por ingredientes (tags) -->
+    <div class="filter-section">
+      <div class="filter-title">Ingredientes <span>▾</span></div>
+      <div class="tag-grid">
+        <span class="tag active">Vegano</span>
+        <span class="tag">Rosa Mosqueta</span>
+        <span class="tag">Vitamina C</span>
+        <span class="tag">Retinol</span>
+        <span class="tag active">Cruelty-free</span>
+        <span class="tag">FPS</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO PRINCIPAL: Produtos -->
+  <main>
+    <!-- Barra superior (resultados + ordenação) -->
+    <div class="shop-topbar">
+      <div class="found-text"><strong>172 produtos</strong> encontrados</div>
+      <div class="topbar-right">
+        <select class="sort-select">
+          <option>Mais relevantes</option>
+          <option>Menor preço</option>
+          <option>Maior preço</option>
+          <option>Mais vendidos</option>
+          <option>Novidades</option>
+        </select>
+        <div class="view-btns">
+          <button class="view-btn active" aria-label="Visualização em grade">⊞</button>
+          <button class="view-btn" aria-label="Visualização em lista">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grade de produtos COM IMAGENS REAIS -->
+    <div class="products-grid">
+      
+      <!-- Produto 1 - Batom Matte -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Batom Matte Nude Perfeito/Batom-Matte-Nude-Perfeito.png" alt="Batom Matte Nude Perfeito">
+          <span class="sold-badge">Mais Vendido</span>
+          <span class="free-ship">🚚 Frete Grátis</span>
+          <button class="heart-btn" aria-label="Favoritar">❤️</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Batom Matte Nude Perfeito</div>
+          <div class="stars">★★★★★ <span>(284)</span></div>
+          <div><span class="price">R$ 59,90</span><span class="price-old">R$ 74,90</span></div>
+          <div class="installment">em 3x de R$ 19,97 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 2 - Sérum Vitamina C -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Sérum-Vitamina-C-Iluminador.png" alt="Sérum Vitamina C Iluminador">
+          <span class="sold-badge">Mais Vendido</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Sérum Vitamina C Iluminador</div>
+          <div class="stars">★★★★★ <span>(197)</span></div>
+          <div><span class="price">R$ 89,90</span></div>
+          <div class="installment">em 3x de R$ 29,97 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 3 - Base Líquida -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Base-Líquida-Glow-24h.png" alt="Base Líquida Glow 24h">
+          <span class="sold-badge gold">Lançamento</span>
+          <span class="free-ship">🚚 Frete Grátis</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Base Líquida Glow 24h</div>
+          <div class="stars">★★★★☆ <span>(143)</span></div>
+          <div><span class="price">R$ 119,90</span><span class="price-old">R$ 139,90</span></div>
+          <div class="installment">em 4x de R$ 29,98 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 4 - Máscara Facial -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Máscara-Facial-Argila-Verde.png" alt="Máscara Facial Argila Verde">
+          <span class="sold-badge green">Vegano</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Máscara Facial Argila Verde</div>
+          <div class="stars">★★★★★ <span>(89)</span></div>
+          <div><span class="price">R$ 44,90</span></div>
+          <div class="installment">em 2x de R$ 22,45 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 5 - Hidratante -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Hidratante-Manteiga-de-Karité.png" alt="Hidratante Manteiga de Karité">
+          <span class="sold-badge">Mais Vendido</span>
+          <span class="free-ship">🚚 Frete Grátis</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Hidratante Manteiga de Karité</div>
+          <div class="stars">★★★★★ <span>(312)</span></div>
+          <div><span class="price">R$ 69,90</span><span class="price-old">R$ 84,90</span></div>
+          <div class="installment">em 3x de R$ 23,30 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 6 - Perfume -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Perfume-Floral-Lavande-Intense.png" alt="Perfume Floral Lavande Intense">
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Perfume Floral Lavande Intense</div>
+          <div class="stars">★★★★☆ <span>(76)</span></div>
+          <div><span class="price">R$ 189,90</span></div>
+          <div class="installment">em 6x de R$ 31,65 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 7 - Blush -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Blush-Pêssego-Natural-Duo.png" alt="Blush Pêssego Natural Duo">
+          <span class="sold-badge red">Low Stock</span>
+          <span class="free-ship">🚚 Frete Grátis</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Blush Pêssego Natural Duo</div>
+          <div class="stars">★★★★★ <span>(221)</span></div>
+          <div><span class="price">R$ 52,90</span><span class="price-old">R$ 64,90</span></div>
+          <div class="installment">em 2x de R$ 26,45 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 8 - Tônico Facial -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/produtos/Tônico-Facial-Água-de-Rosas.png" alt="Tônico Facial Água de Rosas">
+          <span class="sold-badge green">Vegano</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Tônico Facial Água de Rosas</div>
+          <div class="stars">★★★★★ <span>(158)</span></div>
+          <div><span class="price">R$ 38,90</span></div>
+          <div class="installment">em 2x de R$ 19,45 sem juros</div>
+        </div>
+      </div>
+
+      <!-- Produto 9 - Paleta Iluminador -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="imagens/ofertas/Perfumes-Coleção-Gold.png" alt="Paleta Iluminador Rose Gold">
+          <span class="sold-badge gold">Lançamento</span>
+          <button class="heart-btn" aria-label="Favoritar">🤍</button>
+          <button class="quick-buy" aria-label="Comprar rápido">Comprar rápido</button>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Paleta Iluminador Rose Gold</div>
+          <div class="stars">★★★★★ <span>(43)</span></div>
+          <div><span class="price">R$ 79,90</span></div>
+          <div class="installment">em 3x de R$ 26,63 sem juros</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <span class="pagination-dots">…</span>
+      <button class="page-btn">12</button>
+      <button class="page-btn page-next">Próximo →</button>
+    </div>
+  </main>
+</div>
+<!-- ==================== RODAPÉ ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Logo e descrição -->
+      <div>
+        <a href="index.html" class="footer-logo">Glow <span>Beauty</span></a>
+        <p class="footer-desc">Cosméticos veganos e cruelty-free para realçar sua beleza natural.</p>
+        <div class="footer-social">
+          <a class="social-icon" href="#" aria-label="Instagram">📷</a>
+          <a class="social-icon" href="#" aria-label="TikTok">🎵</a>
+          <a class="social-icon" href="#" aria-label="Pinterest">📌</a>
+        </div>
+      </div>
+      <!-- Institucional -->
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <a href="#">Quem Somos</a>
+        <a href="#">Blog</a>
+      </div>
+      <!-- Ajuda -->
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <a href="conta.html">Minha Conta</a>
+        <a href="#">Trocas</a>
+      </div>
+      <!-- Políticas -->
+      <div class="footer-col">
+        <h4>Políticas</h4>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Glow Beauty.</div>
+      <div class="footer-seals">
+        <span class="seal">SSL</span>
+        <span class="seal">Pix</span>
+        <span class="seal">Visa</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

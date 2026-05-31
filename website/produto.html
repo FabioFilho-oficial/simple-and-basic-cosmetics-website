@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ico -->
+<link rel="shortcut icon" href="imagens/icon.ico" type="image/x-icon">
+<title>Glow Beauty — Batom Matte Nude (Tabs sem JS)</title>
+<!-- CSS externo -->
+<link rel="stylesheet" href="css/produto.css">
+<!-- Fonte externa mantida -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ==================== CABEÇALHO ==================== -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Glow <span>Beauty</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="produto.html" class="active">Produto</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="conta.html">Minha Conta</a>
+    </nav>
+    <div class="header-icons">
+      <button class="icon-btn" aria-label="Buscar">🔍</button>
+      <button class="icon-btn" aria-label="Minha conta">👤</button>
+      <button class="icon-btn" aria-label="Carrinho">
+        🛒
+        <span class="badge">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== RADIOS PARA CONTROLE DAS ABAS ==================== -->
+<input type="radio" name="produto-tab" id="tab-desc" class="tab-radio" checked>
+<input type="radio" name="produto-tab" id="tab-ingr" class="tab-radio">
+<input type="radio" name="produto-tab" id="tab-modo" class="tab-radio">
+<input type="radio" name="produto-tab" id="tab-aval" class="tab-radio">
+
+<!-- ==================== RADIOS PARA CONTROLE DA GALERIA ==================== -->
+<input type="radio" name="gallery" id="img-1" class="gallery-radio" checked>
+<input type="radio" name="gallery" id="img-2" class="gallery-radio">
+<input type="radio" name="gallery" id="img-3" class="gallery-radio">
+<input type="radio" name="gallery" id="img-4" class="gallery-radio">
+
+<!-- ==================== BREADCRUMB (MIGALHAS) ==================== -->
+<div class="breadcrumb-bar">
+  <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <a href="shop.html">Batom</a> / Batom Matte Nude Perfeito
+</div>
+
+<!-- ==================== DETALHES DO PRODUTO ==================== -->
+<div class="product-detail">
+  
+  <!-- GALERIA DE IMAGENS COM FOTOS REAIS -->
+  <div class="gallery">
+    <!-- Imagens principais (use suas próprias imagens) -->
+    <div class="main-img" id="main-img-1">
+      <img src="imagens/produtos/Batom Matte Nude Perfeito/Batom-Matte-Nude-Perfeito.png" alt="Batom Matte Nude Perfeito - Cor principal">
+    </div>
+    <div class="main-img" id="main-img-2">
+      <img src="imagens/produtos/Batom Matte Nude Perfeito/Aplicação-nos-lábios.png" alt="Batom Matte Nude - Aplicação nos lábios">
+    </div>
+    <div class="main-img" id="main-img-3">
+      <img src="imagens/produtos/Batom Matte Nude Perfeito/Embalagem-Batom-Matte-Nude.png" alt="Batom Matte Nude - Embalagem">
+    </div>
+    <div class="main-img" id="main-img-4">
+      <img src="imagens/produtos/Batom Matte Nude Perfeito/Swatch-na-pele-Batom-Matte-Nude.png" alt="Batom Matte Nude - Swatch na pele">
+    </div>
+    
+    <!-- Thumbnails (miniaturas) -->
+    <div class="thumbnails">
+      <label for="img-1" class="thumb">
+        <img src="imagens/produtos/Batom Matte Nude Perfeito/Batom-Matte-Nude-Perfeito.png" alt="Thumbnail 1">
+      </label>
+      <label for="img-2" class="thumb">
+        <img src="imagens/produtos/Batom Matte Nude Perfeito/Aplicação-nos-lábios.png" alt="Thumbnail 2">
+      </label>
+      <label for="img-3" class="thumb">
+        <img src="imagens/produtos/Batom Matte Nude Perfeito/Embalagem-Batom-Matte-Nude.png" alt="Thumbnail 3">
+      </label>
+      <label for="img-4" class="thumb">
+        <img src="imagens/produtos/Batom Matte Nude Perfeito/Swatch-na-pele-Batom-Matte-Nude.png" alt="Thumbnail 4">
+      </label>
+    </div>
+  </div>
+
+  <!-- INFORMAÇÕES DO PRODUTO -->
+  <div class="product-info">
+    <!-- Badges -->
+    <div class="info-badges">
+      <span class="info-badge badge-sold">Mais Vendido</span>
+      <span class="info-badge badge-veg">Vegano</span>
+      <span class="info-badge badge-free">🚚 Frete Grátis</span>
+    </div>
+    
+    <h1>Batom Matte Nude Perfeito</h1>
+    
+    <!-- Avaliação resumida -->
+    <div class="rating-row">
+      <span class="stars-lg">★★★★★</span>
+      <span class="rating-count">4,9 · 284 avaliações</span>
+    </div>
+    
+    <!-- Preço -->
+    <div class="price-block">
+      <div>
+        <span class="price-main"><small>R$</small> 59,90</span>
+        <span class="price-old-lg">R$ 74,90</span>
+      </div>
+      <div class="installment-lg">ou em 3x de R$ 19,97 sem juros</div>
+    </div>
+    
+    <!-- Descrição resumida -->
+    <p class="product-description">Fórmula matte ultrapigmentada de longa duração. Hidrata os lábios enquanto oferece cor intensa e cobertura total. Cruelty-free e vegano.</p>
+    
+    <hr class="divider">
+    
+    <!-- Seletor de cores -->
+    <div class="color-section">
+      <label>Cor — <span class="color-label-value">Nude Rose</span></label>
+      <div class="color-dots">
+        <label class="color-dot active" style="background:#D4887C" title="Nude Rose"></label>
+        <label class="color-dot" style="background:#C4A882" title="Cappuccino"></label>
+        <label class="color-dot" style="background:#8B4513" title="Sienna"></label>
+        <label class="color-dot" style="background:#E8B4A0" title="Blush Pêssego"></label>
+        <label class="color-dot" style="background:#B22222" title="Vermelho Clássico"></label>
+      </div>
+    </div>
+    
+    <!-- Seletor de quantidade -->
+    <div class="qty-section">
+      <label>Quantidade</label>
+      <div class="qty-row">
+        <div class="qty-ctrl">
+          <button class="qty-btn" aria-label="Diminuir quantidade">−</button>
+          <div class="qty-val">1</div>
+          <button class="qty-btn" aria-label="Aumentar quantidade">+</button>
+        </div>
+        <div class="subtotal">Subtotal: <strong>R$ 59,90</strong></div>
+      </div>
+    </div>
+    
+    <!-- Botões de ação -->
+    <div class="cta-btns">
+      <button class="btn-primary">Comprar agora</button>
+      <button class="btn-outline">Adicionar ao carrinho</button>
+    </div>
+    
+    <!-- Vantagens -->
+    <div class="perks">
+      <div class="perk"><span>🔒</span> Compra segura</div>
+      <div class="perk"><span>🔄</span> Troca em 30 dias</div>
+      <div class="perk"><span>🌿</span> Cruelty-free</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABAS (TABS) SEM JS ==================== -->
+<div class="tabs-section">
+  <!-- Navegação das abas -->
+  <div class="tabs-nav">
+    <label for="tab-desc" class="tab-btn">Descrição</label>
+    <label for="tab-ingr" class="tab-btn">Ingredientes</label>
+    <label for="tab-modo" class="tab-btn">Modo de uso</label>
+    <label for="tab-aval" class="tab-btn">Avaliações (284)</label>
+  </div>
+  
+  <!-- Conteúdo: Descrição -->
+  <div class="tab-content" id="content-desc">
+    <p class="tab-text">O <strong>Batom Matte Nude Perfeito</strong> foi desenvolvido com uma fórmula exclusiva de longa duração que combina pigmentos de alta qualidade com agentes hidratantes naturais. Proporciona até 12 horas de cor intensa sem ressecamento. Disponível em 5 tons de nude que complementam diferentes tonalidades de pele.<br><br>A textura ultra cremosa facilita a aplicação e o acabamento matte sofisticado é perfeito para o dia a dia ou ocasiões especiais. Livre de parabenos, fragrâncias sintéticas e testado dermatologicamente.</p>
+  </div>
+  
+  <!-- Conteúdo: Ingredientes -->
+  <div class="tab-content" id="content-ingr">
+    <p class="tab-text">Ricinus Communis (Castor) Seed Oil, Caprylic/Capric Triglyceride, Ozokerite, Candelilla Cera, Cera Carnauba, Tocopherol (Vitamina E), Rosa Damascena Flower Extract, Aloe Barbadensis Leaf Juice, Vitamin C (Ascorbyl Glucoside).<br><br><strong>Vegano | Cruelty-free | Sem parabenos | Sem fragrâncias sintéticas | Testado dermatologicamente</strong></p>
+  </div>
+  
+  <!-- Conteúdo: Modo de uso -->
+  <div class="tab-content" id="content-modo">
+    <p class="tab-text">1. Esfolie suavemente os lábios antes da aplicação para melhor aderência.<br><br>2. Aplique diretamente dos lábios a partir do centro para as extremidades, usando movimentos precisos.<br><br>3. Para maior durabilidade, aplique uma camada fina, pressione levemente com um lenço e aplique a segunda camada.<br><br>4. Para um acabamento perfeito, contorne os lábios com um lápis na mesma tonalidade antes de aplicar o batom.</p>
+  </div>
+  
+  <!-- Conteúdo: Avaliações -->
+  <div class="tab-content" id="content-aval">
+    <!-- Resumo estatístico -->
+    <div class="rating-summary">
+      <div class="rating-summary-score">
+        <div class="rating-big-number">4,9</div>
+        <div class="stars-lg">★★★★★</div>
+        <div class="rating-total">284 avaliações</div>
+      </div>
+      <div class="rating-bars">
+        <div class="rating-bar-item"><span class="rating-star-label">5★</span><div class="rating-bar-bg"><div class="rating-bar-fill" style="width:82%"></div></div><span class="rating-percent">82%</span></div>
+        <div class="rating-bar-item"><span class="rating-star-label">4★</span><div class="rating-bar-bg"><div class="rating-bar-fill" style="width:14%"></div></div><span class="rating-percent">14%</span></div>
+        <div class="rating-bar-item"><span class="rating-star-label">3★</span><div class="rating-bar-bg"><div class="rating-bar-fill" style="width:4%"></div></div><span class="rating-percent">4%</span></div>
+      </div>
+    </div>
+    
+    <!-- Cards de avaliação -->
+    <div class="review-card">
+      <div class="review-header"><span class="review-author">Ana Medeiros</span><span class="review-date">15 abr 2025</span></div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Produto incrível! A cor é exatamente como na foto, a durabilidade é real. Usei num evento de 8 horas e precisei retocar apenas uma vez. Super recomendo!</p>
+    </div>
+    
+    <div class="review-card">
+      <div class="review-header"><span class="review-author">Camila Ferreira</span><span class="review-date">02 abr 2025</span></div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Melhor batom matte que já usei. Não resseca, não transfere e a cor fica linda. Comprei o tom Nude Rose e combinou perfeitamente com minha pele morena.</p>
+    </div>
+    
+    <div class="review-card">
+      <div class="review-header"><span class="review-author">Juliana Costa</span><span class="review-date">28 mar 2025</span></div>
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">Muito boa qualidade. Dou 4 estrelas porque o tempo de entrega foi um pouco longo, mas o produto em si é perfeito. Já comprei o segundo!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRODUTOS RELACIONADOS COM IMAGENS REAIS ==================== -->
+<div class="related-section">
+  <span class="section-tag">Você também vai amar</span>
+  <h2 class="section-title">Produtos <em>relacionados</em></h2>
+  <div class="related-scroll">
+    <!-- Produto 1 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="imagens/produtos/lip-gloss-rose.png" alt="Lip Gloss Crystal Rose">
+      </div>
+      <div class="product-body">
+        <div class="product-name">Lip Gloss Crystal Rose</div>
+        <div class="stars">★★★★★</div>
+        <div class="price">R$ 34,90</div>
+      </div>
+    </div>
+    
+    <!-- Produto 2 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="imagens/produtos/lapis-labial-nude.png" alt="Lápis Labial Nude">
+      </div>
+      <div class="product-body">
+        <div class="product-name">Lápis Labial Nude</div>
+        <div class="stars">★★★★☆</div>
+        <div class="price">R$ 24,90</div>
+      </div>
+    </div>
+    
+    <!-- Produto 3 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="imagens/produtos/blush-pessego.png" alt="Blush Pêssego Natural">
+      </div>
+      <div class="product-body">
+        <div class="product-name">Blush Pêssego Natural</div>
+        <div class="stars">★★★★★</div>
+        <div class="price">R$ 52,90</div>
+      </div>
+    </div>
+    
+    <!-- Produto 4 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="imagens/produtos/primer-labios.png" alt="Primer Lábios Hidra">
+      </div>
+      <div class="product-body">
+        <div class="product-name">Primer Lábios Hidra</div>
+        <div class="stars">★★★★☆</div>
+        <div class="price">R$ 42,90</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BOTÃO VOLTAR AO TOPO ==================== -->
+<button class="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+<!-- ==================== RODAPÉ ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">Glow <span>Beauty</span></a>
+        <p class="footer-desc">Cosméticos veganos e cruelty-free para realçar sua beleza natural.</p>
+        <div class="footer-social">
+          <a class="social-icon" href="#" aria-label="Instagram">📷</a>
+          <a class="social-icon" href="#" aria-label="TikTok">🎵</a>
+          <a class="social-icon" href="#" aria-label="Pinterest">📌</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <a href="#">Quem Somos</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <a href="conta.html">Minha Conta</a>
+        <a href="#">Trocas</a>
+      </div>
+      <div class="footer-col">
+        <h4>Políticas</h4>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Glow Beauty.</div>
+      <div class="footer-seals">
+        <span class="seal">SSL</span>
+        <span class="seal">Pix</span>
+        <span class="seal">Visa</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

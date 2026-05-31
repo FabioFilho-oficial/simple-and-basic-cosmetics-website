@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--ico-->
+<link rel="shortcut icon" href="imagens/icon.ico" type="image/x-icon">
+<title>Glow Beauty — Checkout (Multi-step sem JS)</title>
+<!-- CSS externo (você já tem) -->
+<link rel="stylesheet" href="css/checkout.css">
+<!-- Fonte externa -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ==================== CABEÇALHO ==================== -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Glow <span>Beauty</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="produto.html">Produto</a>
+      <a href="checkout.html" class="active">Checkout</a>
+      <a href="conta.html">Minha Conta</a>
+    </nav>
+    <div class="header-icons">
+      <button class="icon-btn" aria-label="Segurança">🔒</button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== RADIOS PARA CONTROLE DAS ETAPAS ==================== -->
+<!-- Estes radios ficam ocultos e controlam qual etapa é exibida -->
+<input type="radio" name="checkout-step" id="step-identificacao" class="step-radio" checked>
+<input type="radio" name="checkout-step" id="step-entrega" class="step-radio">
+<input type="radio" name="checkout-step" id="step-pagamento" class="step-radio">
+<input type="radio" name="checkout-step" id="step-sucesso" class="step-radio">
+
+<!-- ==================== CONTEÚDO PRINCIPAL DO CHECKOUT ==================== -->
+<div class="checkout-wrap">
+  
+  <!-- INDICADOR DE ETAPAS (STEP PROGRESS) -->
+  <div class="step-progress">
+    <!-- Etapa 1 -->
+    <label for="step-identificacao" class="step step-label-radio" data-step="1">
+      <div class="step-num">1</div>
+      <div class="step-label">Identificação</div>
+    </label>
+    <div class="step-line"></div>
+    
+    <!-- Etapa 2 -->
+    <label for="step-entrega" class="step step-label-radio" data-step="2">
+      <div class="step-num">2</div>
+      <div class="step-label">Entrega</div>
+    </label>
+    <div class="step-line"></div>
+    
+    <!-- Etapa 3 -->
+    <label for="step-pagamento" class="step step-label-radio" data-step="3">
+      <div class="step-num">3</div>
+      <div class="step-label">Pagamento</div>
+    </label>
+  </div>
+
+  <!-- GRADE: FORMULÁRIO + RESUMO -->
+  <div class="checkout-grid">
+    
+    <!-- ==================== PAINEL DO FORMULÁRIO ==================== -->
+    <div class="form-panel">
+      
+      <!-- ETAPA 1 — IDENTIFICAÇÃO -->
+      <div class="form-step" id="form-identificacao">
+        <div class="panel-title"><span>👤</span> Identificação</div>
+        
+        <div class="form-row one">
+          <div class="field"><label>Nome completo</label><input type="text" placeholder="Seu nome completo"></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="field"><label>E-mail</label><input type="email" placeholder="email@exemplo.com"></div>
+          <div class="field"><label>CPF</label><input type="text" placeholder="000.000.000-00"></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="field"><label>Telefone</label><input type="tel" placeholder="(00) 00000-0000"></div>
+          <div class="field"><label>Data de nascimento</label><input type="date"></div>
+        </div>
+        
+        <div class="form-row one">
+          <div class="field"><label>Senha</label><input type="password" placeholder="Crie uma senha segura"><span class="field-icon">🔒</span></div>
+        </div>
+        
+        <div class="newsletter-checkbox">
+          <input type="checkbox" id="newsletter" class="checkbox-input">
+          <label for="newsletter" class="checkbox-label">Quero receber ofertas e novidades por e-mail</label>
+        </div>
+        
+        <label for="step-entrega" class="btn-primary btn-next">Continuar para entrega →</label>
+      </div>
+
+      <!-- ETAPA 2 — ENTREGA -->
+      <div class="form-step" id="form-entrega">
+        <label for="step-identificacao" class="btn-back">← Voltar</label>
+        <div class="panel-title"><span>📦</span> Endereço de entrega</div>
+        
+        <div class="form-row">
+          <div class="field"><label>CEP</label><input type="text" placeholder="00000-000"><span class="field-icon">🔍</span></div>
+          <div class="field"><label>Estado</label>
+            <select>
+              <option>Bahia</option>
+              <option>São Paulo</option>
+              <option>Rio de Janeiro</option>
+              <option>Minas Gerais</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row one">
+          <div class="field success"><label>Rua / Logradouro</label><input type="text" value="Rua das Flores"><span class="field-icon">✅</span></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="field"><label>Número</label><input type="text" placeholder="123"></div>
+          <div class="field"><label>Complemento</label><input type="text" placeholder="Apto, sala..."></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="field"><label>Bairro</label><input type="text" placeholder="Seu bairro"></div>
+          <div class="field"><label>Cidade</label><input type="text" placeholder="Sua cidade"></div>
+        </div>
+        
+        <!-- Modalidades de entrega -->
+        <div class="shipping-section">
+          <div class="shipping-title">Modalidade de entrega</div>
+          <div class="shipping-options">
+            <label class="shipping-option active">
+              <input type="radio" name="ship" checked>
+              <div><div class="shipping-name">Envio Padrão — Grátis</div><div class="shipping-desc">Entrega em 5–8 dias úteis</div></div>
+            </label>
+            <label class="shipping-option">
+              <input type="radio" name="ship">
+              <div><div class="shipping-name">Expresso — R$ 19,90</div><div class="shipping-desc">Entrega em 2–3 dias úteis</div></div>
+            </label>
+          </div>
+        </div>
+        
+        <label for="step-pagamento" class="btn-primary btn-next">Continuar para pagamento →</label>
+      </div>
+
+      <!-- ETAPA 3 — PAGAMENTO -->
+      <div class="form-step" id="form-pagamento">
+        <label for="step-entrega" class="btn-back">← Voltar</label>
+        <div class="panel-title"><span>💳</span> Pagamento</div>
+        
+        <!-- Métodos de pagamento -->
+        <div class="payment-methods">
+          <div class="pay-method active">💳 Cartão</div>
+          <div class="pay-method">📱 Pix</div>
+          <div class="pay-method">📄 Boleto</div>
+        </div>
+        
+        <!-- Bandeiras aceitas -->
+        <div class="card-icons">
+          <span class="card-icon">Visa</span>
+          <span class="card-icon">Master</span>
+          <span class="card-icon">Amex</span>
+          <span class="card-icon">Elo</span>
+        </div>
+        
+        <!-- Dados do cartão -->
+        <div class="form-row one">
+          <div class="field"><label>Número do cartão</label><input type="text" placeholder="0000 0000 0000 0000"><span class="field-icon">💳</span></div>
+        </div>
+        
+        <div class="form-row one">
+          <div class="field"><label>Nome no cartão</label><input type="text" placeholder="Como aparece no cartão"></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="field"><label>Validade</label><input type="text" placeholder="MM/AA"></div>
+          <div class="field"><label>CVV</label><input type="text" placeholder="123"><span class="field-icon">🔒</span></div>
+        </div>
+        
+        <div class="form-row one">
+          <div class="field"><label>Parcelamento</label>
+            <select>
+              <option>À vista — R$ 156,80</option>
+              <option>2x de R$ 78,40 sem juros</option>
+              <option>3x de R$ 52,27 sem juros</option>
+              <option>6x de R$ 26,13 sem juros</option>
+            </select>
+          </div>
+        </div>
+        
+        <label for="step-sucesso" class="btn-primary btn-finalize">🔒 Finalizar compra com segurança</label>
+        <div class="secure-badge">🔒 Compra 100% segura · SSL · PCI DSS</div>
+      </div>
+
+      <!-- TELA DE SUCESSO (após finalizar pedido) -->
+      <div class="success-screen" id="form-sucesso">
+        <div class="success-icon">🎉</div>
+        <h2>Pedido <em>confirmado!</em></h2>
+        <p>Seu pedido #GB-29847 foi realizado com sucesso. Você receberá um e-mail de confirmação com o código de rastreamento em breve.</p>
+        <div class="success-btns">
+          <a href="conta.html" class="btn-outline">Ver meu pedido</a>
+          <a href="shop.html" class="btn-primary btn-continue">Continuar comprando</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== RESUMO DO PEDIDO (SIDEBAR) COM IMAGENS REAIS ==================== -->
+    <div class="order-summary">
+      <div class="summary-title">Resumo do pedido</div>
+
+      <!-- Produto 1 - Batom -->
+      <div class="summary-item">
+        <div class="item-img">
+          <img src="imagens/produtos/Batom Matte Nude Perfeito/Batom-Matte-Nude-Perfeito.png" alt="Batom Matte Nude Perfeito">
+        </div>
+        <div class="item-info">
+          <div class="item-name">Batom Matte Nude Perfeito</div>
+          <div class="item-var">Cor: Nude Rose · Qtd: 1</div>
+        </div>
+        <div class="item-price">R$ 59,90</div>
+      </div>
+      
+      <!-- Produto 2 - Sérum -->
+      <div class="summary-item">
+        <div class="item-img">
+          <img src="imagens/produtos/Sérum-Vitamina-C-Iluminador.png" alt="Sérum Vitamina C Iluminador">
+        </div>
+        <div class="item-info">
+          <div class="item-name">Sérum Vitamina C Iluminador</div>
+          <div class="item-var">30ml · Qtd: 1</div>
+        </div>
+        <div class="item-price">R$ 89,90</div>
+      </div>
+      
+      <!-- Produto 3 - Máscara Facial -->
+      <div class="summary-item">
+        <div class="item-img">
+          <img src="imagens/produtos/Máscara-Facial-Argila-Verde.png" alt="Máscara Facial Argila Verde">
+        </div>
+        <div class="item-info">
+          <div class="item-name">Máscara Facial Argila Verde</div>
+          <div class="item-var">100g · Qtd: 1</div>
+        </div>
+        <div class="item-price">R$ 44,90</div>
+      </div>
+
+      <!-- Calculadora de frete -->
+      <div class="freight-section">
+        <div class="freight-label">Calcular frete</div>
+        <div class="cep-row">
+          <input type="text" placeholder="Digite seu CEP">
+          <button class="btn-calc">Calcular</button>
+        </div>
+      </div>
+
+      <!-- Cupom de desconto -->
+      <div class="coupon-section">
+        <input type="text" placeholder="Cupom de desconto" class="coupon-input">
+        <button class="btn-coupon">OK</button>
+      </div>
+
+      <hr class="summary-divider">
+      
+      <!-- Totais -->
+      <div class="summary-row"><span>Subtotal</span><span>R$ 194,70</span></div>
+      <div class="summary-row discount"><span>Desconto (10% off)</span><span>− R$ 19,47</span></div>
+      <div class="summary-row"><span>Frete</span><span class="free-shipping-text">Grátis</span></div>
+      <div class="summary-row total"><span>Total</span><span>R$ 175,23</span></div>
+      <div class="installment-info">ou 6x de R$ 29,20 sem juros</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

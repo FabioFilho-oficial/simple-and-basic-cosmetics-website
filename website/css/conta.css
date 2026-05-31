@@ -1,0 +1,1083 @@
+/* ==================== RESET E VARIÁVEIS GLOBAIS ==================== */
+/* Remove margens/padding padrão e define box-sizing para todos os elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Define variáveis globais de cores, sombras e espaçamentos */
+:root {
+  --white: #FFFFFF;
+  --rose: #F9EFF1;
+  --peach: #FFE0D4;
+  --gold: #D4AF37;
+  --gold-dark: #B8962A;
+  --text: #2C1810;
+  --text-muted: #7A6058;
+  --text-light: #B09890;
+  --border: rgba(212, 175, 55, 0.18);
+  --shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Define fonte, cor de fundo e texto padrão do corpo da página */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FAF8F5;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ==================== CABEÇALHO ==================== */
+/* Cabeçalho fixo no topo com efeito vidro e borda dourada */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Container centralizado que organiza logo, menu e ícones */
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estiliza a logo da marca com fonte elegante */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+/* Destaca a parte dourada da logo */
+.logo span {
+  color: var(--gold);
+}
+
+/* Menu de navegação horizontal com espaçamento entre links */
+nav {
+  display: flex;
+  gap: 36px;
+}
+
+/* Links do menu com efeito de transição e posição relativa */
+nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* Linha dourada que aparece abaixo do link ao passar mouse ou na página ativa */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.25s;
+}
+
+/* Escurece o texto do link ao passar o mouse */
+nav a:hover {
+  color: var(--text);
+}
+
+/* Mantém o link da página atual mais escuro */
+nav a.active {
+  color: var(--text);
+}
+
+/* Exibe a linha dourada no link da página atual */
+nav a.active::after {
+  width: 100%;
+}
+
+/* Container dos ícones de busca, usuário e carrinho */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Botões dos ícones com estilo limpo e transição */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 18px;
+  position: relative;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+/* Escurece o ícone ao passar o mouse */
+.icon-btn:hover {
+  color: var(--text);
+}
+
+/* Selo circular com número de itens no carrinho */
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -7px;
+  background: var(--gold);
+  color: white;
+  font-size: 9px;
+  font-weight: 600;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==================== HERO DA CONTA ==================== */
+/* Seção hero com gradiente e informações do usuário */
+.account-hero {
+  background: linear-gradient(135deg, var(--rose), var(--peach));
+  padding: 40px 24px;
+}
+
+/* Container interno do hero da conta */
+.account-hero-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Avatar grande do usuário com gradiente dourado */
+.avatar-big {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #E8C84A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+}
+
+/* Título de boas-vindas com fonte elegante */
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* Destaque dourado em itálico no nome do usuário */
+.hero-text h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Email ou informação adicional do usuário */
+.hero-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Card de pontos de fidelidade alinhado à direita */
+.hero-points {
+  margin-left: auto;
+  text-align: center;
+  background: white;
+  padding: 16px 28px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Valor numérico dos pontos em destaque */
+.points-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* Label dos pontos de fidelidade */
+.points-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Nível/tier do programa de fidelidade */
+.hero-tier {
+  font-size: 11px;
+  color: var(--gold-dark);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ==================== LAYOUT PRINCIPAL ==================== */
+/* Layout em grid com sidebar e conteúdo principal */
+.account-layout {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+}
+
+/* ==================== SIDEBAR NAVEGAÇÃO ==================== */
+/* Barra lateral de navegação da conta */
+.account-nav {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  box-shadow: var(--shadow);
+}
+
+/* Item individual de navegação da sidebar */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+/* Hover dos itens de navegação */
+.nav-item:hover {
+  background: var(--rose);
+  color: var(--text);
+}
+
+/* Item de navegação ativo */
+.nav-item.active {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+
+/* Ícone dentro do item de navegação */
+.nav-item span {
+  font-size: 18px;
+}
+
+/* Linha divisória entre os itens do menu */
+.nav-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+}
+
+/* Item de logout com cor vermelha */
+.nav-item.logout {
+  color: #E63946;
+}
+
+/* Hover do botão de logout com fundo vermelho claro */
+.nav-item.logout:hover {
+  background: #FFF0F0;
+}
+
+/* ==================== CONTEÚDO PRINCIPAL ==================== */
+/* Container do conteúdo principal da conta */
+.account-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ==================== PAINÉIS (PANELS) ==================== */
+/* Cada painel de conteúdo da conta */
+.panel {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  display: none;
+}
+
+/* Painel ativo visível */
+.panel.active {
+  display: block;
+}
+
+/* Cabeçalho do painel com título e botão de edição */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Título do painel com fonte elegante */
+.panel-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Botão de edição */
+.btn-edit {
+  background: var(--rose);
+  border: none;
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Botão de edição em hover vira dourado */
+.btn-edit:hover {
+  background: var(--gold);
+  color: white;
+}
+
+/* ==================== CARTÕES DE PEDIDO COM IMAGENS REAIS ==================== */
+/* Card individual de pedido */
+.order-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s;
+}
+
+/* Sombra no hover do card de pedido */
+.order-card:hover {
+  box-shadow: var(--shadow);
+}
+
+/* Cabeçalho do pedido com ID, data e status */
+.order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Número do pedido (ID) */
+.order-id {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Data do pedido */
+.order-date {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Status do pedido com badge colorido */
+.order-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+/* Badge verde para pedidos entregues */
+.status-delivered {
+  background: rgba(45, 106, 79, 0.12);
+  color: #2D6A4F;
+}
+
+/* Badge dourado para pedidos em trânsito */
+.status-transit {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--gold-dark);
+}
+
+/* Badge neutro para pedidos em processamento */
+.status-processing {
+  background: rgba(44, 24, 16, 0.08);
+  color: var(--text-muted);
+}
+
+/* Linha com miniaturas dos produtos do pedido */
+.order-items-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* Miniatura do produto no pedido */
+.order-item-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Imagem da miniatura do produto */
+.order-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+/* Zoom na imagem ao passar mouse no card */
+.order-card:hover .order-item-thumb img {
+  transform: scale(1.05);
+}
+
+/* Indicador de mais itens no pedido */
+.order-item-more {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Rodapé do pedido com total e ações */
+.order-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Valor total do pedido */
+.order-total {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Texto menor ao lado do total */
+.order-total small {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* Container dos botões de ação do pedido */
+.order-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Botão de comprar novamente */
+.btn-reorder {
+  background: var(--gold);
+  color: white;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Botão reorder em hover */
+.btn-reorder:hover {
+  background: var(--gold-dark);
+}
+
+/* Botão de rastrear pedido */
+.btn-track {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Botão track em hover */
+.btn-track:hover {
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+/* ==================== ENDEREÇOS ==================== */
+/* Grid de endereços cadastrados */
+.address-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Card individual de endereço */
+.address-card {
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Hover do card de endereço */
+.address-card:hover {
+  border-color: var(--gold);
+}
+
+/* Endereço padrão com borda dourada e fundo suave */
+.address-card.default {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.04);
+}
+
+/* Badge de "Padrão" no canto superior direito */
+.address-default-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-dark);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+/* Nome do destinatário */
+.address-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Texto completo do endereço */
+.address-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Botões de ação do endereço */
+.address-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Botões editar e deletar */
+.address-edit,
+.address-delete {
+  font-size: 12px;
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s;
+}
+
+/* Botão editar */
+.address-edit {
+  color: var(--text-muted);
+}
+
+/* Hover do botão editar */
+.address-edit:hover {
+  border-color: var(--gold);
+}
+
+/* Botão deletar com cor vermelha */
+.address-delete {
+  color: #E63946;
+}
+
+/* Card para adicionar novo endereço (estilo pontilhado) */
+.add-address {
+  border: 1.5px dashed var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Hover do botão de adicionar endereço */
+.add-address:hover {
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+/* Ícone de adicionar */
+.add-icon {
+  font-size: 24px;
+}
+
+/* ==================== DADOS PESSOAIS ==================== */
+/* Grid dos campos de dados pessoais */
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Cada campo do formulário */
+.data-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+}
+
+/* Input dos dados pessoais */
+.data-field input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--rose);
+  outline: none;
+  transition: all 0.2s;
+}
+
+/* Input em focus ganha borda dourada */
+.data-field input:focus {
+  background: white;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+/* Seção de alteração de senha */
+.password-section {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  margin-top: 8px;
+}
+
+/* Título da seção de senha */
+.password-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Botão de salvar alterações */
+.btn-save {
+  background: var(--gold);
+  color: white;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Botão salvar em hover */
+.btn-save:hover {
+  background: var(--gold-dark);
+}
+
+/* ==================== FIDELIDADE ==================== */
+/* Cabeçalho da seção de fidelidade com gradiente escuro */
+.loyalty-header {
+  background: linear-gradient(135deg, var(--text), #4A2820);
+  border-radius: 16px;
+  padding: 28px;
+  color: white;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Emoji decorativo no fundo do header */
+.loyalty-header::after {
+  content: '💎';
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 60px;
+  opacity: 0.15;
+}
+
+/* Número de pontos em destaque */
+.loyalty-points {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+}
+
+/* Label dos pontos */
+.loyalty-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+}
+
+/* Tier/nível do usuário */
+.loyalty-tier {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Barra de progresso para o próximo nível */
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  margin: 16px 0 8px;
+  overflow: hidden;
+}
+
+/* Preenchimento da barra de progresso */
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+/* Texto do progresso */
+.progress-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Título das recompensas disponíveis */
+.rewards-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Grid de recompensas */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Card individual de recompensa */
+.reward-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+/* Hover do card de recompensa */
+.reward-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+/* Ícone/emoji da recompensa */
+.reward-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Nome da recompensa */
+.reward-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Pontos necessários para a recompensa */
+.reward-pts {
+  font-size: 12px;
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+
+/* ==================== RODAPÉ ==================== */
+/* Rodapé com fundo escuro */
+footer {
+  background: var(--text);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 64px 24px 32px;
+  margin-top: 60px;
+}
+
+/* Container interno do rodapé */
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Grid do rodapé com 4 colunas */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 32px;
+}
+
+/* Logo do rodapé */
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  display: block;
+  text-decoration: none;
+}
+
+/* Parte dourada da logo do rodapé */
+.footer-logo span {
+  color: var(--gold);
+}
+
+/* Texto descritivo da loja */
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 260px;
+  margin-bottom: 24px;
+}
+
+/* Container dos ícones sociais */
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+/* Ícone social individual */
+.social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+/* Borda dourada no hover do ícone social */
+.social-icon:hover {
+  border-color: var(--gold);
+}
+
+/* Título das colunas do rodapé */
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* Links das colunas do rodapé */
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+/* Links ficam dourados ao passar mouse */
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+/* Bottom do rodapé com copyright e selos */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Texto de copyright */
+.footer-copy {
+  font-size: 13px;
+}
+
+/* Container dos selos de segurança */
+.footer-seals {
+  display: flex;
+  gap: 12px;
+}
+
+/* Selos individuais de segurança */
+.seal {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+/* Responsividade para tablets (900px) */
+@media (max-width: 900px) {
+  /* Layout vira coluna única */
+  .account-layout {
+    grid-template-columns: 1fr;
+  }
+  /* Sidebar deixa de ser fixa e vira horizontal */
+  .account-nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 12px;
+  }
+  /* Esconde divisores no menu mobile */
+  .nav-divider {
+    display: none;
+  }
+  /* Endereços, dados e recompensas viram 1 coluna */
+  .address-grid,
+  .data-grid,
+  .rewards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsividade para celulares (768px) */
+@media (max-width: 768px) {
+  /* Esconde menu de navegação em celular */
+  nav {
+    display: none;
+  }
+  /* Rodapé vira 1 coluna */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== MULTI-STEP SEM JS ==================== */
+/* Esconde os inputs radio usados para controlar os painéis */
+.step-radio {
+  display: none;
+}
+
+/* Esconde todos os painéis por padrão */
+.panel {
+  display: none;
+}
+
+/* Mostra o painel correto baseado no radio marcado usando seletores CSS */
+#step-pedidos:checked ~ .account-layout .account-main #panel-pedidos,
+#step-enderecos:checked ~ .account-layout .account-main #panel-enderecos,
+#step-dados:checked ~ .account-layout .account-main #panel-dados,
+#step-fidelidade:checked ~ .account-layout .account-main #panel-fidelidade {
+  display: block;
+}
+
+/* Estilo do item de navegação como label clicável */
+.nav-radio {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  text-decoration: none;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hover do item de navegação radio */
+.nav-radio:hover {
+  background: var(--rose);
+  color: var(--text);
+}
+
+/* Item de navegação ativo baseado no radio marcado */
+#step-pedidos:checked ~ .account-layout .account-nav label[for="step-pedidos"],
+#step-enderecos:checked ~ .account-layout .account-nav label[for="step-enderecos"],
+#step-dados:checked ~ .account-layout .account-nav label[for="step-dados"],
+#step-fidelidade:checked ~ .account-layout .account-nav label[for="step-fidelidade"] {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--gold-dark);
+  font-weight: 600;
+}

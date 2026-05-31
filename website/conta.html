@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--ico-->
+<link rel="shortcut icon" href="imagens/icon.ico" type="image/x-icon">
+<title>Glow Beauty — Minha Conta (Multi-step sem JS)</title>
+<!-- CSS externo (você já tem) -->
+<link rel="stylesheet" href="css/conta.css">
+<!-- Fonte externa -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ==================== CABEÇALHO ==================== -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Glow <span>Beauty</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="produto.html">Produto</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="conta.html" class="active">Minha Conta</a>
+    </nav>
+    <div class="header-icons">
+      <button class="icon-btn" aria-label="Buscar">🔍</button>
+      <button class="icon-btn" aria-label="Carrinho">
+        🛒
+        <span class="badge">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== HERO DA CONTA ==================== -->
+<div class="account-hero">
+  <div class="account-hero-inner">
+    <div class="avatar-big">AM</div>
+    <div class="hero-text">
+      <h1>Olá, <em>Ana Medeiros</em> 🌸</h1>
+      <p>ana.medeiros@email.com · Membro desde Jan 2024</p>
+    </div>
+    <div class="hero-points">
+      <div class="points-val">1.240</div>
+      <div class="points-label">pontos Clube de Beleza</div>
+      <div class="hero-tier">Nível Ouro ✨</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RADIOS PARA CONTROLE DAS ETAPAS ==================== -->
+<!-- Estes radios ficam ocultos e controlam qual painel é exibido -->
+<input type="radio" name="step" id="step-pedidos" class="step-radio" checked>
+<input type="radio" name="step" id="step-enderecos" class="step-radio">
+<input type="radio" name="step" id="step-dados" class="step-radio">
+<input type="radio" name="step" id="step-fidelidade" class="step-radio">
+
+<!-- ==================== LAYOUT PRINCIPAL ==================== -->
+<div class="account-layout">
+  
+  <!-- SIDEBAR NAVEGAÇÃO (LABELS controlam os radios) -->
+  <div class="account-nav">
+    <label for="step-pedidos" class="nav-radio">
+      <span>📦</span> Pedidos
+    </label>
+    <label for="step-enderecos" class="nav-radio">
+      <span>📍</span> Endereços
+    </label>
+    <label for="step-dados" class="nav-radio">
+      <span>👤</span> Meus dados
+    </label>
+    <label for="step-fidelidade" class="nav-radio">
+      <span>💎</span> Fidelidade
+    </label>
+    <hr class="nav-divider">
+    <a href="index.html" class="nav-radio logout">
+      <span>🚪</span> Sair
+    </a>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="account-main">
+
+    <!-- ==================== PAINEL: PEDIDOS COM IMAGENS REAIS ==================== -->
+    <div class="panel" id="panel-pedidos">
+      <div class="panel-header">
+        <h2>Meus pedidos</h2>
+        <button class="btn-edit">Ver todos</button>
+      </div>
+
+      <!-- Pedido 1 - Entregue -->
+      <div class="order-card">
+        <div class="order-header">
+          <div>
+            <div class="order-id">Pedido #GB-29847</div>
+            <div class="order-date">15 de abril de 2025</div>
+          </div>
+          <span class="order-status status-delivered">✓ Entregue</span>
+        </div>
+        <div class="order-items-row">
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Batom Matte Nude Perfeito/Batom-Matte-Nude-Perfeito.png" alt="Batom Batom-Matte-Nude-Perfeito">
+          </div>
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Sérum-Vitamina-C-Iluminador.png" alt="Sérum Vitamina Sérum-Vitamina-C-Iluminador">
+          </div>
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Máscara-Facial-Argila-Verde.png" alt="Máscara Facial">
+          </div>
+          <div class="order-item-more">+2</div>
+        </div>
+        <div class="order-footer">
+          <div class="order-total">R$ 156,80 <small>· 3 itens</small></div>
+          <div class="order-actions">
+            <button class="btn-track">Rastrear</button>
+            <button class="btn-reorder">Comprar novamente</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pedido 2 - Em trânsito -->
+      <div class="order-card">
+        <div class="order-header">
+          <div>
+            <div class="order-id">Pedido #GB-28103</div>
+            <div class="order-date">28 de março de 2025</div>
+          </div>
+          <span class="order-status status-transit">🚚 Em trânsito</span>
+        </div>
+        <div class="order-items-row">
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Base-Líquida-Glow-24h.png" alt="Base Base-Líquida-Glow-24h">
+          </div>
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Hidratante-Manteiga-de-Karité.png" alt="Hidratante-Manteiga-de-Karité">
+          </div>
+        </div>
+        <div class="order-footer">
+          <div class="order-total">R$ 189,80 <small>· 2 itens</small></div>
+          <div class="order-actions">
+            <button class="btn-track">Rastrear</button>
+            <button class="btn-reorder">Comprar novamente</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pedido 3 - Entregue -->
+      <div class="order-card">
+        <div class="order-header">
+          <div>
+            <div class="order-id">Pedido #GB-26540</div>
+            <div class="order-date">10 de fevereiro de 2025</div>
+          </div>
+          <span class="order-status status-delivered">✓ Entregue</span>
+        </div>
+        <div class="order-items-row">
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/blush-pessego.png" alt="blush-pessego">
+          </div>
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Tônico-Facial-Água-de-Rosas.png" alt="Tônico Tônico-Facial-Água-de-Rosas">
+          </div>
+          <div class="order-item-thumb">
+            <img src="imagens/produtos/Batom Matte Nude Perfeito/Batom-Matte-Nude-Perfeito.png" alt="Batom-Matte-Nude-Perfeito">
+          </div>
+        </div>
+        <div class="order-footer">
+          <div class="order-total">R$ 151,70 <small>· 3 itens</small></div>
+          <div class="order-actions">
+            <button class="btn-track">Ver nota fiscal</button>
+            <button class="btn-reorder">Comprar novamente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PAINEL: ENDEREÇOS ==================== -->
+    <div class="panel" id="panel-enderecos">
+      <div class="panel-header">
+        <h2>Meus endereços</h2>
+        <button class="btn-edit">+ Adicionar</button>
+      </div>
+      <div class="address-grid">
+        <!-- Endereço principal (default) -->
+        <div class="address-card default">
+          <span class="address-default-badge">Principal</span>
+          <div class="address-name">🏠 Casa</div>
+          <div class="address-text">
+            Rua das Flores, 234, Apto 12<br>
+            Barra, Salvador — BA<br>
+            CEP: 41.750-000
+          </div>
+          <div class="address-actions">
+            <button class="address-edit">Editar</button>
+            <button class="address-delete">Excluir</button>
+          </div>
+        </div>
+        
+        <!-- Endereço secundário -->
+        <div class="address-card">
+          <div class="address-name">🏢 Trabalho</div>
+          <div class="address-text">
+            Av. Tancredo Neves, 1.109, Sala 204<br>
+            Caminho das Árvores, Salvador — BA<br>
+            CEP: 41.820-021
+          </div>
+          <div class="address-actions">
+            <button class="address-edit">Editar</button>
+            <button class="address-delete">Excluir</button>
+          </div>
+        </div>
+        
+        <!-- Botão adicionar novo endereço -->
+        <div class="add-address">
+          <span class="add-icon">＋</span> Adicionar novo endereço
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PAINEL: MEUS DADOS ==================== -->
+    <div class="panel" id="panel-dados">
+      <div class="panel-header">
+        <h2>Meus dados</h2>
+      </div>
+      <div class="data-grid">
+        <div class="data-field">
+          <label>Nome completo</label>
+          <input type="text" value="Ana Medeiros">
+        </div>
+        <div class="data-field">
+          <label>CPF</label>
+          <input type="text" value="123.456.789-00">
+        </div>
+        <div class="data-field">
+          <label>E-mail</label>
+          <input type="email" value="ana.medeiros@email.com">
+        </div>
+        <div class="data-field">
+          <label>Telefone</label>
+          <input type="tel" value="(71) 99999-8888">
+        </div>
+        <div class="data-field">
+          <label>Data de nascimento</label>
+          <input type="date" value="1992-06-15">
+        </div>
+        <div class="data-field">
+          <label>Gênero</label>
+          <input type="text" value="Feminino">
+        </div>
+      </div>
+      
+      <!-- Alterar senha -->
+      <div class="password-section">
+        <div class="password-title">Alterar senha</div>
+        <div class="data-grid">
+          <div class="data-field">
+            <label>Senha atual</label>
+            <input type="password" placeholder="••••••••">
+          </div>
+          <div class="data-field">
+            <label>Nova senha</label>
+            <input type="password" placeholder="••••••••">
+          </div>
+        </div>
+      </div>
+      
+      <button class="btn-save">Salvar alterações</button>
+    </div>
+
+    <!-- ==================== PAINEL: FIDELIDADE ==================== -->
+    <div class="panel" id="panel-fidelidade">
+      <div class="panel-header">
+        <h2>Clube de Beleza</h2>
+      </div>
+      
+      <!-- Card de progresso -->
+      <div class="loyalty-header">
+        <div class="loyalty-label">Seus pontos</div>
+        <div class="loyalty-points">1.240</div>
+        <div class="loyalty-tier">Nível Ouro — próximo: Diamante em 760 pontos</div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 68%"></div>
+        </div>
+        <div class="progress-text">1.240 / 2.000 pontos para Diamante</div>
+      </div>
+      
+      <!-- Grid de recompensas -->
+      <div class="rewards-title">Resgatar prêmios</div>
+      <div class="rewards-grid">
+        <div class="reward-card">
+          <div class="reward-icon">💄</div>
+          <div class="reward-name">Batom Matte</div>
+          <div class="reward-pts">500 pontos</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">🎁</div>
+          <div class="reward-name">Kit Presente</div>
+          <div class="reward-pts">800 pontos</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">🚚</div>
+          <div class="reward-name">Frete Grátis</div>
+          <div class="reward-pts">200 pontos</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">🏷️</div>
+          <div class="reward-name">Cupom 15% off</div>
+          <div class="reward-pts">400 pontos</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">✨</div>
+          <div class="reward-name">Paleta Glow</div>
+          <div class="reward-pts">1.000 pontos</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">👑</div>
+          <div class="reward-name">Box Diamante</div>
+          <div class="reward-pts">2.000 pontos</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== RODAPÉ ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">Glow <span>Beauty</span></a>
+        <p class="footer-desc">Cosméticos veganos e cruelty-free para realçar sua beleza natural.</p>
+        <div class="footer-social">
+          <a class="social-icon" href="#" aria-label="Instagram">📷</a>
+          <a class="social-icon" href="#" aria-label="TikTok">🎵</a>
+          <a class="social-icon" href="#" aria-label="Pinterest">📌</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <a href="#">Quem Somos</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <a href="#">Rastrear Pedido</a>
+        <a href="#">Trocas</a>
+      </div>
+      <div class="footer-col">
+        <h4>Políticas</h4>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Glow Beauty.</div>
+      <div class="footer-seals">
+        <span class="seal">SSL</span>
+        <span class="seal">Pix</span>
+        <span class="seal">Visa</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

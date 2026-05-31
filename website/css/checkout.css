@@ -1,0 +1,968 @@
+/* ==================== RESET E VARIÁVEIS GLOBAIS ==================== */
+/* Remove margens/padding padrão e define box-sizing para todos os elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Define variáveis globais de cores, sombras e espaçamentos */
+:root {
+  --white: #FFFFFF;
+  --rose: #F9EFF1;
+  --peach: #FFE0D4;
+  --gold: #D4AF37;
+  --gold-dark: #B8962A;
+  --text: #2C1810;
+  --text-muted: #7A6058;
+  --text-light: #B09890;
+  --border: rgba(212, 175, 55, 0.18);
+  --shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Define fonte, cor de fundo e texto padrão do corpo da página */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FAF8F5;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ==================== CABEÇALHO ==================== */
+/* Cabeçalho com fundo branco e borda inferior */
+header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Container centralizado que organiza logo, menu e ícones */
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estiliza a logo da marca com fonte elegante */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+/* Destaca a parte dourada da logo */
+.logo span {
+  color: var(--gold);
+}
+
+/* Menu de navegação horizontal com espaçamento entre links */
+nav {
+  display: flex;
+  gap: 36px;
+}
+
+/* Links do menu com efeito de transição e posição relativa */
+nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* Linha dourada que aparece abaixo do link ao passar mouse ou na página ativa */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.25s;
+}
+
+/* Escurece o texto do link ao passar o mouse */
+nav a:hover {
+  color: var(--text);
+}
+
+/* Mantém o link da página atual mais escuro */
+nav a.active {
+  color: var(--text);
+}
+
+/* Exibe a linha dourada no link da página atual */
+nav a.active::after {
+  width: 100%;
+}
+
+/* Container dos ícones de busca, usuário e carrinho */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Botões dos ícones com estilo limpo e transição */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 18px;
+  position: relative;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+/* ==================== LAYOUT PRINCIPAL ==================== */
+/* Container principal do checkout com largura máxima */
+.checkout-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+/* ==================== INDICADOR DE ETAPAS ==================== */
+/* Barra de progresso das etapas do checkout */
+.step-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+  gap: 0;
+}
+
+/* Cada etapa individual do processo */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Número circular de cada etapa */
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+/* Etapa ativa: número dourado com sombra */
+.step.active .step-num {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: white;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Etapa concluída: número escuro */
+.step.done .step-num {
+  background: var(--text);
+  border-color: var(--text);
+  color: white;
+}
+
+/* Label (texto) da etapa */
+.step-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Label da etapa ativa ou concluída fica mais escuro */
+.step.active .step-label,
+.step.done .step-label {
+  color: var(--text);
+}
+
+/* Linha de conexão entre as etapas */
+.step-line {
+  width: 100px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 8px;
+  margin-bottom: 24px;
+  transition: background 0.3s;
+}
+
+/* Linha de conexão concluída */
+.step-line.done {
+  background: var(--text);
+}
+
+/* ==================== GRADE CHECKOUT ==================== */
+/* Layout em grid com formulário e resumo do pedido */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ==================== PAINEL DO FORMULÁRIO ==================== */
+/* Painel branco do formulário de checkout */
+.form-panel {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+
+/* Título do painel com fonte elegante */
+.panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Ícone ao lado do título */
+.panel-title span {
+  font-size: 22px;
+}
+
+/* Linha do formulário com duas colunas */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Linha do formulário com uma coluna */
+.form-row.one {
+  grid-template-columns: 1fr;
+}
+
+/* Container do campo individual */
+.field {
+  position: relative;
+}
+
+/* Label do campo */
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Input e select do formulário */
+.field input,
+.field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* Input em focus ganha borda dourada */
+.field input:focus,
+.field select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+/* Placeholder com cor mais suave */
+.field input::placeholder {
+  color: var(--text-light);
+}
+
+/* Campo com erro (borda vermelha) */
+.field.error input {
+  border-color: #E63946;
+}
+
+/* Campo com sucesso (borda verde) */
+.field.success input {
+  border-color: #2D6A4F;
+}
+
+/* Ícone dentro do campo */
+.field-icon {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  font-size: 16px;
+}
+
+/* Checkbox da newsletter */
+.newsletter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Estilização do checkbox com cor dourada */
+.checkbox-input {
+  accent-color: var(--gold);
+  width: 18px;
+  height: 18px;
+}
+
+/* ==================== MÉTODOS DE PAGAMENTO ==================== */
+/* Container dos métodos de pagamento */
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* Cada método de pagamento individual */
+.pay-method {
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hover do método de pagamento */
+.pay-method:hover {
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+/* Método de pagamento ativo */
+.pay-method.active {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-dark);
+}
+
+/* Ícones dos cartões aceitos */
+.card-icons {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+/* Cada ícone de cartão */
+.card-icon {
+  background: var(--rose);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==================== BOTÕES PRIMÁRIOS ==================== */
+/* Botão primário dourado */
+.btn-primary {
+  background: var(--gold);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Hover do botão primário */
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+}
+
+/* Botão finalizar compra com padding maior */
+.btn-finalize {
+  font-size: 16px;
+  padding: 18px;
+}
+
+/* Botão continuar sem underline */
+.btn-continue {
+  text-decoration: none;
+}
+
+/* Botão voltar com estilo clean */
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+/* Hover do botão voltar */
+.btn-back:hover {
+  color: var(--text);
+}
+
+/* ==================== MODALIDADES DE ENTREGA ==================== */
+/* Seção de opções de frete */
+.shipping-section {
+  margin-bottom: 28px;
+}
+
+/* Título da seção de frete */
+.shipping-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+/* Container das opções de frete */
+.shipping-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cada opção de frete individual */
+.shipping-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Opção de frete ativa */
+.shipping-option.active {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* Radio button do frete */
+.shipping-option input {
+  accent-color: var(--gold);
+}
+
+/* Nome da modalidade de frete */
+.shipping-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Descrição do frete (prazo, valor) */
+.shipping-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ==================== FORMULÁRIO (ETAPAS) ==================== */
+/* Cada etapa do formulário */
+.form-step {
+  display: none;
+}
+
+/* Etapa ativa fica visível */
+.form-step.active {
+  display: block;
+}
+
+/* ==================== TELA DE SUCESSO ==================== */
+/* Tela de confirmação do pedido */
+.success-screen {
+  text-align: center;
+  padding: 60px 20px;
+  display: none;
+}
+
+/* Ícone de sucesso grande */
+.success-icon {
+  font-size: 72px;
+  margin-bottom: 24px;
+}
+
+/* Título da tela de sucesso */
+.success-screen h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+/* Destaque dourado no título */
+.success-screen h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Parágrafo da tela de sucesso */
+.success-screen p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 auto 32px;
+}
+
+/* Container dos botões da tela de sucesso */
+.success-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Botão outline (secundário) */
+.btn-outline {
+  background: none;
+  color: var(--gold-dark);
+  border: 1.5px solid var(--gold);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Hover do botão outline */
+.btn-outline:hover {
+  background: var(--gold);
+  color: white;
+}
+
+/* ==================== RESUMO DO PEDIDO COM IMAGENS REAIS ==================== */
+/* Card de resumo do pedido (fixo ao rolar) */
+.order-summary {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 100px;
+}
+
+/* Título do resumo do pedido */
+.summary-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Item individual do resumo do pedido */
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* Imagem do produto no resumo */
+.item-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Imagem do produto no resumo */
+.item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+/* Zoom na imagem ao passar mouse */
+.summary-item:hover .item-img img {
+  transform: scale(1.05);
+}
+
+/* Informações do produto no resumo */
+.item-info {
+  flex: 1;
+}
+
+/* Nome do produto no resumo */
+.item-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Variação do produto (cor, tamanho) */
+.item-var {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Preço do produto no resumo */
+.item-price {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Seção de cálculo de frete */
+.freight-section {
+  margin: 16px 0;
+}
+
+/* Label do cálculo de frete */
+.freight-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Linha do CEP */
+.cep-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* Input do CEP */
+.cep-row input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+
+/* Input do CEP em focus */
+.cep-row input:focus {
+  border-color: var(--gold);
+}
+
+/* Botão calcular frete */
+.btn-calc {
+  background: var(--rose);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+/* Hover do botão calcular frete */
+.btn-calc:hover {
+  background: var(--gold);
+  color: white;
+  border-color: var(--gold);
+}
+
+/* Seção de cupom de desconto */
+.coupon-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Input do código do cupom */
+.coupon-input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  outline: none;
+}
+
+/* Botão aplicar cupom */
+.btn-coupon {
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s;
+}
+
+/* Hover do botão cupom */
+.btn-coupon:hover {
+  background: var(--gold-dark);
+}
+
+/* Divisória dos totais */
+.summary-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* Linha individual do resumo (subtotal, frete, etc) */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Linha de desconto com cor verde */
+.summary-row.discount span:last-child {
+  color: #2D6A4F;
+}
+
+/* Texto de frete grátis */
+.free-shipping-text {
+  color: #2D6A4F;
+}
+
+/* Linha do total */
+.summary-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 14px;
+}
+
+/* Valor total em destaque dourado */
+.summary-row.total span:last-child {
+  color: var(--gold-dark);
+}
+
+/* Informações de parcelamento */
+.installment-info {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 4px;
+}
+
+/* Badge de segurança no final do resumo */
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  justify-content: center;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+/* Responsividade para tablets (900px) */
+@media (max-width: 900px) {
+  /* Layout vira coluna única */
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  /* Resumo deixa de ser fixo */
+  .order-summary {
+    position: static;
+  }
+}
+
+/* Responsividade para celulares (768px) */
+@media (max-width: 768px) {
+  /* Esconde menu de navegação em celular */
+  nav {
+    display: none;
+  }
+  /* Formulário vira coluna única */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  /* Linhas de progresso ficam menores */
+  .step-line {
+    width: 48px;
+  }
+}
+
+/* ==================== MULTI-STEP SEM JS ==================== */
+/* Esconde os inputs radio usados para controlar as etapas */
+.step-radio {
+  display: none;
+}
+
+/* Esconde todos os formulários e tela de sucesso por padrão */
+.form-step,
+.success-screen {
+  display: none;
+}
+
+/* Mostra o formulário correto baseado no radio marcado usando seletores CSS */
+#step-identificacao:checked ~ .checkout-wrap .checkout-grid .form-panel #form-identificacao,
+#step-entrega:checked ~ .checkout-wrap .checkout-grid .form-panel #form-entrega,
+#step-pagamento:checked ~ .checkout-wrap .checkout-grid .form-panel #form-pagamento,
+#step-sucesso:checked ~ .checkout-wrap .checkout-grid .form-panel #form-sucesso {
+  display: block;
+}
+
+/* Estilo dos labels que funcionam como botões de navegação */
+.step-label-radio {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Estilo do passo ativo baseado no radio marcado (número dourado) */
+#step-identificacao:checked ~ .checkout-wrap .step-progress label[for="step-identificacao"] .step-num,
+#step-entrega:checked ~ .checkout-wrap .step-progress label[for="step-entrega"] .step-num,
+#step-pagamento:checked ~ .checkout-wrap .step-progress label[for="step-pagamento"] .step-num {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: white;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Estilo do texto do passo ativo */
+#step-identificacao:checked ~ .checkout-wrap .step-progress label[for="step-identificacao"] .step-label,
+#step-entrega:checked ~ .checkout-wrap .step-progress label[for="step-entrega"] .step-label,
+#step-pagamento:checked ~ .checkout-wrap .step-progress label[for="step-pagamento"] .step-label {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Estilo dos passos concluídos (número escuro) */
+#step-entrega:checked ~ .checkout-wrap .step-progress label[for="step-identificacao"] .step-num,
+#step-pagamento:checked ~ .checkout-wrap .step-progress label[for="step-identificacao"] .step-num,
+#step-pagamento:checked ~ .checkout-wrap .step-progress label[for="step-entrega"] .step-num,
+#step-sucesso:checked ~ .checkout-wrap .step-progress label[for="step-identificacao"] .step-num,
+#step-sucesso:checked ~ .checkout-wrap .step-progress label[for="step-entrega"] .step-num,
+#step-sucesso:checked ~ .checkout-wrap .step-progress label[for="step-pagamento"] .step-num {
+  background: var(--text);
+  border-color: var(--text);
+  color: white;
+}
+
+/* Linhas de progresso concluídas (ficam escuras) */
+#step-entrega:checked ~ .checkout-wrap .step-progress .step-line:first-of-type,
+#step-pagamento:checked ~ .checkout-wrap .step-progress .step-line:first-of-type,
+#step-pagamento:checked ~ .checkout-wrap .step-progress .step-line:nth-of-type(2),
+#step-sucesso:checked ~ .checkout-wrap .step-progress .step-line {
+  background: var(--text);
+}
+
+/* Botões de navegação como labels clicáveis */
+.btn-next,
+.btn-back {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Botão próximo (avançar) */
+.btn-next {
+  background: var(--gold);
+  color: white;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+}
+
+/* Hover do botão próximo */
+.btn-next:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+}
+
+/* Botão voltar */
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+/* Hover do botão voltar */
+.btn-back:hover {
+  color: var(--text);
+}

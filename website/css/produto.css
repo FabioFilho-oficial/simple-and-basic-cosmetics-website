@@ -1,0 +1,1104 @@
+/* ==================== RESET E VARIÁVEIS GLOBAIS ==================== */
+/* Remove margens/padding padrão e define box-sizing para todos os elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Define variáveis globais de cores, sombras e espaçamentos */
+:root {
+  --white: #FFFFFF;
+  --rose: #F9EFF1;
+  --peach: #FFE0D4;
+  --gold: #D4AF37;
+  --gold-dark: #B8962A;
+  --text: #2C1810;
+  --text-muted: #7A6058;
+  --text-light: #B09890;
+  --border: rgba(212, 175, 55, 0.18);
+  --shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Define fonte, cor de fundo e texto padrão do corpo da página */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ==================== CABEÇALHO ==================== */
+/* Cabeçalho fixo no topo com efeito vidro e borda dourada */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Container centralizado que organiza logo, menu e ícones */
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estiliza a logo da marca com fonte elegante */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+/* Destaca a parte dourada da logo */
+.logo span {
+  color: var(--gold);
+}
+
+/* Menu de navegação horizontal com espaçamento entre links */
+nav {
+  display: flex;
+  gap: 36px;
+}
+
+/* Links do menu com efeito de transição e posição relativa */
+nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* Linha dourada que aparece abaixo do link ao passar mouse ou na página ativa */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.25s;
+}
+
+/* Escurece o texto do link ao passar o mouse */
+nav a:hover {
+  color: var(--text);
+}
+
+/* Mantém o link da página atual mais escuro */
+nav a.active {
+  color: var(--text);
+}
+
+/* Exibe a linha dourada no link da página atual */
+nav a.active::after {
+  width: 100%;
+}
+
+/* Container dos ícones de busca, usuário e carrinho */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Botões dos ícones com estilo limpo e transição */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 18px;
+  position: relative;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+/* Escurece o ícone ao passar o mouse */
+.icon-btn:hover {
+  color: var(--text);
+}
+
+/* Selo circular com número de itens no carrinho */
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -7px;
+  background: var(--gold);
+  color: white;
+  font-size: 9px;
+  font-weight: 600;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==================== BREADCRUMB ==================== */
+/* Barra de navegação mostrando o caminho da página atual */
+.breadcrumb-bar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Links do breadcrumb */
+.breadcrumb-bar a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+/* Links do breadcrumb ficam dourados ao passar mouse */
+.breadcrumb-bar a:hover {
+  color: var(--gold);
+}
+
+/* ==================== DETALHES DO PRODUTO ==================== */
+/* Layout principal da página de detalhes do produto em duas colunas */
+.product-detail {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Galeria de imagens fixa ao rolar a página */
+.gallery {
+  position: sticky;
+  top: 100px;
+}
+
+/* ==================== GALERIA PRINCIPAL ==================== */
+/* Container da imagem principal do produto */
+.main-img {
+  height: 480px;
+  background: #FFFFFF;  /* Fundo BRANCO */
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+/* Imagem principal mantém proporção e tem zoom suave */
+.main-img img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;  /* Imagem INTEIRA, sem cortes */
+  transition: transform 0.3s;
+}
+
+/* Aplica zoom na imagem ao passar mouse */
+.main-img:hover img {
+  transform: scale(1.02);
+}
+
+/* ==================== THUMBNAILS ==================== */
+/* Grid de miniaturas com 4 colunas */
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Cada miniatura individual */
+.thumb {
+  height: 90px;
+  background: #FFFFFF;  /* Fundo BRANCO */
+  border-radius: 14px;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+  padding: 8px;  /* Espaçamento interno */
+}
+
+/* Imagem da miniatura mantém proporção */
+.thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;  /* Imagem INTEIRA, sem cortes */
+}
+
+/* Miniatura ativa ou em hover ganha borda dourada e fundo rosa */
+.thumb:hover,
+.thumb.active {
+  border-color: var(--gold);
+  background: var(--rose);
+}
+
+/* Informações do produto - coluna direita */
+.product-info {
+  padding-top: 8px;
+}
+
+/* Container dos badges de status do produto */
+.info-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* Estilo base dos badges */
+.info-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+/* Badge escuro para produtos esgotados */
+.badge-sold {
+  background: var(--text);
+  color: white;
+}
+
+/* Badge verde para produtos veganos */
+.badge-veg {
+  background: #2D6A4F;
+  color: white;
+}
+
+/* Badge para frete grátis */
+.badge-free {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-dark);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Título do produto com fonte elegante */
+.product-info h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+/* Linha com avaliações e estrelas */
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Estrelas grandes de avaliação */
+.stars-lg {
+  color: var(--gold);
+  font-size: 18px;
+}
+
+/* Número total de avaliações */
+.rating-count {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Bloco de preços do produto */
+.price-block {
+  margin-bottom: 28px;
+}
+
+/* Preço principal em destaque */
+.price-main {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Parte dos centavos do preço */
+.price-main small {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Preço antigo riscado */
+.price-old-lg {
+  font-size: 16px;
+  color: var(--text-light);
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+/* Informações de parcelamento */
+.installment-lg {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Descrição resumida do produto */
+.product-description {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* Linha divisória decorativa */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* Seletor de cores do produto */
+.color-section label,
+.qty-section label {
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Valor da cor selecionada com cor mais suave */
+.color-label-value {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* Container dos círculos de cores */
+.color-dots {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+/* Círculo individual de cada cor */
+.color-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color 0.2s;
+  position: relative;
+  display: inline-block;
+}
+
+/* Borda dourada na cor selecionada ou em hover */
+.color-dot:hover,
+.color-dot.active {
+  border-color: var(--gold);
+}
+
+/* Tooltip com o nome da cor que aparece ao passar mouse */
+.color-dot::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Exibe o tooltip ao passar mouse */
+.color-dot:hover::after {
+  opacity: 1;
+}
+
+/* Seletor de quantidade do produto */
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Container dos controles de quantidade */
+.qty-ctrl {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+/* Botões de aumentar/diminuir quantidade */
+.qty-btn {
+  background: none;
+  border: none;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+/* Botões de quantidade em hover */
+.qty-btn:hover {
+  background: var(--rose);
+  color: var(--text);
+}
+
+/* Valor atual da quantidade */
+.qty-val {
+  width: 44px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Subtotal baseado na quantidade selecionada */
+.subtotal {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* Destaca o valor do subtotal */
+.subtotal strong {
+  color: var(--text);
+  font-size: 18px;
+}
+
+/* Botões de ação principal */
+.cta-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+/* Botão principal dourado */
+.btn-primary {
+  background: var(--gold);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+}
+
+/* Botão principal em hover fica mais escuro e sobe levemente */
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+}
+
+/* Botão secundário com contorno dourado */
+.btn-outline {
+  background: none;
+  color: var(--gold-dark);
+  border: 1.5px solid var(--gold);
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Botão outline em hover fica totalmente dourado */
+.btn-outline:hover {
+  background: var(--gold);
+  color: white;
+}
+
+/* Vantagens do produto (frete grátis, garantia, etc) */
+.perks {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Cada vantagem individual */
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Ícone das vantagens */
+.perk span {
+  font-size: 18px;
+}
+
+/* ==================== ABAS (TABS) SEM JS ==================== */
+/* Seção de abas sem JavaScript (apenas CSS) */
+.tabs-section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* Navegação das abas com borda inferior */
+.tabs-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+}
+
+/* Esconde os inputs radio usados para controlar as abas */
+.tab-radio {
+  display: none;
+}
+
+/* Esconde todos os conteúdos por padrão */
+.tab-content {
+  display: none;
+}
+
+/* Mostra o conteúdo baseado no radio marcado usando seletores CSS */
+#tab-desc:checked ~ .tabs-section #content-desc,
+#tab-ingr:checked ~ .tabs-section #content-ingr,
+#tab-modo:checked ~ .tabs-section #content-modo,
+#tab-aval:checked ~ .tabs-section #content-aval {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Estilo dos botões das abas */
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 14px 28px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+  display: inline-block;
+}
+
+/* Botão da aba em hover fica mais escuro */
+.tab-btn:hover {
+  color: var(--text);
+}
+
+/* Linha decorativa embaixo do botão da aba */
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+
+/* Aba ativa baseada no radio marcado muda a cor do texto */
+#tab-desc:checked ~ .tabs-section label[for="tab-desc"],
+#tab-ingr:checked ~ .tabs-section label[for="tab-ingr"],
+#tab-modo:checked ~ .tabs-section label[for="tab-modo"],
+#tab-aval:checked ~ .tabs-section label[for="tab-aval"] {
+  color: var(--gold-dark);
+}
+
+/* Exibe a linha dourada na aba ativa */
+#tab-desc:checked ~ .tabs-section label[for="tab-desc"]::after,
+#tab-ingr:checked ~ .tabs-section label[for="tab-ingr"]::after,
+#tab-modo:checked ~ .tabs-section label[for="tab-modo"]::after,
+#tab-aval:checked ~ .tabs-section label[for="tab-aval"]::after {
+  transform: scaleX(1);
+}
+
+/* Animação de fade in para o conteúdo das abas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Texto do conteúdo das abas */
+.tab-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 740px;
+}
+
+/* ==================== RESPOSTAS DAS AVALIAÇÕES ==================== */
+/* Resumo das avaliações com média e barras */
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: var(--rose);
+  border-radius: 16px;
+}
+
+/* Coluna da nota média */
+.rating-summary-score {
+  text-align: center;
+}
+
+/* Número grande da nota média */
+.rating-big-number {
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Texto abaixo da nota média */
+.rating-total {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Container das barras de avaliação */
+.rating-bars {
+  flex: 1;
+}
+
+/* Cada linha da barra de avaliação */
+.rating-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* Label da quantidade de estrelas */
+.rating-star-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  min-width: 16px;
+}
+
+/* Fundo da barra de progresso */
+.rating-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Barra de progresso preenchida */
+.rating-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+/* Porcentagem ao lado da barra */
+.rating-percent {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Card individual de avaliação */
+.review-card {
+  background: var(--rose);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+/* Cabeçalho da avaliação com autor e data */
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Nome do autor da avaliação */
+.review-author {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Data da avaliação */
+.review-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Estrelas da avaliação */
+.review-stars {
+  color: var(--gold);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* Texto da avaliação */
+.review-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ==================== PRODUTOS RELACIONADOS ==================== */
+/* Seção de produtos relacionados */
+.related-section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* Tag/categoria da seção */
+.section-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Título da seção com fonte elegante */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+/* Destaque dourado em itálico no título */
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Grid de produtos relacionados */
+.related-scroll {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Card individual de produto relacionado */
+.product-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+/* Efeito hover do card: sobe e aumenta sombra */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Container da imagem do produto */
+.product-img {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;  /* Fundo BRANCO */
+  border-radius: 16px 16px 0 0;
+}
+
+/* Imagem mantém proporção original */
+.product-img img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;  /* Imagem INTEIRA, sem cortes */
+  transition: transform 0.3s;
+}
+
+/* Zoom na imagem ao passar mouse */
+.product-card:hover .product-img img {
+  transform: scale(1.05);
+}
+
+/* Corpo do card com informações */
+.product-body {
+  padding: 14px 16px 18px;
+}
+
+/* Nome do produto relacionado */
+.product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* Estrelas de avaliação */
+.stars {
+  color: var(--gold);
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+/* Preço do produto relacionado */
+.price {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ==================== GALERIA COM IMAGENS REAIS ==================== */
+/* Esconde os inputs radio usados para controlar a galeria */
+.gallery-radio {
+  display: none;
+}
+
+/* Esconde todas as imagens principais por padrão */
+.main-img {
+  display: none;
+}
+
+/* Mostra a imagem principal correspondente ao radio selecionado */
+#img-1:checked ~ .product-detail .gallery #main-img-1,
+#img-2:checked ~ .product-detail .gallery #main-img-2,
+#img-3:checked ~ .product-detail .gallery #main-img-3,
+#img-4:checked ~ .product-detail .gallery #main-img-4 {
+  display: flex;
+}
+
+/* Destaca a miniatura correspondente à imagem ativa */
+#img-1:checked ~ .product-detail .gallery .thumbnails label[for="img-1"],
+#img-2:checked ~ .product-detail .gallery .thumbnails label[for="img-2"],
+#img-3:checked ~ .product-detail .gallery .thumbnails label[for="img-3"],
+#img-4:checked ~ .product-detail .gallery .thumbnails label[for="img-4"] {
+  border-color: var(--gold);
+  background: var(--rose);
+}
+
+/* ==================== BOTÃO VOLTAR AO TOPO ==================== */
+/* Botão fixo para voltar ao topo da página */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--gold);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Efeito hover do botão: sobe e aumenta sombra */
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.5);
+}
+
+/* ==================== RODAPÉ ==================== */
+/* Rodapé com fundo escuro */
+footer {
+  background: var(--text);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 64px 24px 32px;
+}
+
+/* Container interno do rodapé */
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Grid do rodapé com 4 colunas */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 32px;
+}
+
+/* Logo do rodapé */
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  display: block;
+  text-decoration: none;
+}
+
+/* Parte dourada da logo do rodapé */
+.footer-logo span {
+  color: var(--gold);
+}
+
+/* Texto descritivo da loja */
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 260px;
+  margin-bottom: 24px;
+}
+
+/* Container dos ícones sociais */
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+/* Ícone social individual */
+.social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+/* Borda dourada no hover do ícone social */
+.social-icon:hover {
+  border-color: var(--gold);
+}
+
+/* Título das colunas do rodapé */
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* Links das colunas do rodapé */
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+/* Links ficam dourados ao passar mouse */
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+/* Bottom do rodapé com copyright e selos */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Texto de copyright */
+.footer-copy {
+  font-size: 13px;
+}
+
+/* Container dos selos de segurança */
+.footer-seals {
+  display: flex;
+  gap: 12px;
+}
+
+/* Selos individuais de segurança */
+.seal {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+/* Responsividade para tablets (900px) - layout vira coluna única */
+@media (max-width: 900px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+  /* Galeria deixa de ser fixa */
+  .gallery {
+    position: static;
+  }
+  /* Produtos relacionados viram 2 colunas */
+  .related-scroll {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsividade para celulares (768px) - esconde menu e ajusta layout */
+@media (max-width: 768px) {
+  /* Esconde menu de navegação em celular */
+  nav {
+    display: none;
+  }
+  /* Rodapé vira 1 coluna */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  /* Resumo de avaliações vira coluna única */
+  .rating-summary {
+    flex-direction: column;
+    text-align: center;
+  }
+}
